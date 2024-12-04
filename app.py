@@ -235,7 +235,7 @@ HEADER = """
 
 def app_gradio():
     with gr.Blocks(title="CatVTON") as demo:
-        gr.Markdown(HEADER)
+        # gr.Markdown(HEADER)
         with gr.Row():
             with gr.Column(scale=1, min_width=350):
                 with gr.Row():
@@ -287,7 +287,7 @@ def app_gradio():
                     show_type = gr.Radio(
                         label="Show Type",
                         choices=["result only", "input & result", "input & mask & result"],
-                        value="input & mask & result",
+                        value="input & result",
                     )
 
             with gr.Column(scale=2, min_width=500):
@@ -314,9 +314,9 @@ def app_gradio():
                             inputs=image_path,
                             label="Person Examples ②",
                         )
-                        gr.Markdown(
-                            '<span style="color: #808080; font-size: small;">*Person examples come from the demos of <a href="https://huggingface.co/spaces/levihsu/OOTDiffusion">OOTDiffusion</a> and <a href="https://www.outfitanyone.org">OutfitAnyone</a>. </span>'
-                        )
+                        # gr.Markdown(
+                        #     '<span style="color: #808080; font-size: small;">*Person examples come from the demos of <a href="https://huggingface.co/spaces/levihsu/OOTDiffusion">OOTDiffusion</a> and <a href="https://www.outfitanyone.org">OutfitAnyone</a>. </span>'
+                        # )
                     with gr.Column():
                         condition_upper_exm = gr.Examples(
                             examples=[
