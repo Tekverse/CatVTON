@@ -254,9 +254,9 @@ def app_gradio():
                             interactive=True, label="Condition Image", type="filepath"
                         )
                     with gr.Column(scale=1, min_width=120):
-                        gr.Markdown(
-                            '<span style="color: #808080; font-size: small;">Two ways to provide Mask:<br>1. Upload the person image and use the `🖌️` above to draw the Mask (higher priority)<br>2. Select the `Try-On Cloth Type` to generate automatically </span>'
-                        )
+                        # gr.Markdown(
+                        #     '<span style="color: #808080; font-size: small;">Two ways to provide Mask:<br>1. Upload the person image and use the `🖌️` above to draw the Mask (higher priority)<br>2. Select the `Try-On Cloth Type` to generate automatically </span>'
+                        # )
                         cloth_type = gr.Radio(
                             label="Try-On Cloth Type",
                             choices=["upper", "lower", "overall"],
@@ -274,7 +274,7 @@ def app_gradio():
                 )
                 with gr.Accordion("Advanced Options", open=False):
                     num_inference_steps = gr.Slider(
-                        label="Inference Step", minimum=10, maximum=100, step=5, value=50
+                        label="Inference Step", minimum=10, maximum=100, step=5, value=40
                     )
                     # Guidence Scale
                     guidance_scale = gr.Slider(
