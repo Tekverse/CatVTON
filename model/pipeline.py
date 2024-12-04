@@ -50,9 +50,9 @@ class CatVTONPipeline:
             self.unet = torch.compile(self.unet)
             self.vae = torch.compile(self.vae, mode="reduce-overhead")
             
-        self.safety_checker = torch.nn.DataParallel(self.safety_checker)
-        self.unet = torch.nn.DataParallel(self.unet)
-        self.vae = torch.nn.DataParallel(self.vae)    
+        # self.safety_checker = torch.nn.DataParallel(self.safety_checker)
+        # self.unet = torch.nn.DataParallel(self.unet)
+        # self.vae = torch.nn.DataParallel(self.vae)    
             
         
         # Enable TF32 for faster training on Ampere GPUs (A100 and RTX 30 series).
