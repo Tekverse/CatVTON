@@ -99,18 +99,28 @@ def prepare_inpainting_input(
 def compute_vae_encodings(image: torch.Tensor, vae: torch.nn.Module) -> torch.Tensor:
     """
     Args:
-        images (torch.Tensor): image to be encoded
-        vae (torch.nn.Module): vae model
+        image (torch.Tensor): Image to be encoded.
+        vae (torch.nn.Module): VAE model.
 
     Returns:
-        torch.Tensor: latent encoding of the image
+        torch.Tensor: Latent encoding of the image.
     """
+    # Kiểm tra nếu vae được bọc bởi DataParallel
+    if isinstance(vae, torch.nn.DataParallel):
+        vae = vae.module
+
+    # Chuyển đổi định dạng và thiết bị
     pixel_values = image.to(memory_format=torch.contiguous_format).float()
     pixel_values = pixel_values.to(vae.device, dtype=vae.dtype)
+    
+    # Lấy encoding không cần gradient
     with torch.no_grad():
         model_input = vae.encode(pixel_values).latent_dist.sample()
+    
+    # Nhân với scaling factor
     model_input = model_input * vae.config.scaling_factor
     return model_input
+
 
 
 # Init Accelerator
