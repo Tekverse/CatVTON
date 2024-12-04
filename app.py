@@ -274,7 +274,7 @@ def app_gradio():
                 )
                 with gr.Accordion("Advanced Options", open=False):
                     num_inference_steps = gr.Slider(
-                        label="Inference Step", minimum=10, maximum=100, step=5, value=40
+                        label="Inference Step", minimum=10, maximum=100, step=5, value=30
                     )
                     # Guidence Scale
                     guidance_scale = gr.Slider(
