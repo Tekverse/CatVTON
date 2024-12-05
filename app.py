@@ -234,7 +234,7 @@ HEADER = """
 """
 
 def app_gradio():
-    with gr.Blocks(title="CatVTON") as demo:
+    with gr.Blocks(title="VTON") as demo:
         # gr.Markdown(HEADER)
         with gr.Row():
             with gr.Column(scale=1, min_width=350):
