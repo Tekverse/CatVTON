@@ -269,9 +269,9 @@ def app_gradio():
                     '<center><span style="color: #FF0000">!!! Click only Once, Wait for Delay !!!</span></center>'
                 )
                 
-                gr.Markdown(
-                    '<span style="color: #808080; font-size: small;">Advanced options can adjust details:<br>1. `Inference Step` may enhance details;<br>2. `CFG` is highly correlated with saturation;<br>3. `Random seed` may improve pseudo-shadow.</span>'
-                )
+                # gr.Markdown(
+                #     '<span style="color: #808080; font-size: small;">Advanced options can adjust details:<br>1. `Inference Step` may enhance details;<br>2. `CFG` is highly correlated with saturation;<br>3. `Random seed` may improve pseudo-shadow.</span>'
+                # )
                 with gr.Accordion("Advanced Options", open=False):
                     num_inference_steps = gr.Slider(
                         label="Inference Step", minimum=10, maximum=100, step=5, value=30
@@ -295,59 +295,59 @@ def app_gradio():
                 with gr.Row():
                     # Photo Examples
                     root_path = "resource/demo/example"
-                    with gr.Column():
-                        men_exm = gr.Examples(
-                            examples=[
-                                os.path.join(root_path, "person", "men", _)
-                                for _ in os.listdir(os.path.join(root_path, "person", "men"))
-                            ],
-                            examples_per_page=4,
-                            inputs=image_path,
-                            label="Person Examples ①",
-                        )
-                        women_exm = gr.Examples(
-                            examples=[
-                                os.path.join(root_path, "person", "women", _)
-                                for _ in os.listdir(os.path.join(root_path, "person", "women"))
-                            ],
-                            examples_per_page=4,
-                            inputs=image_path,
-                            label="Person Examples ②",
-                        )
-                        # gr.Markdown(
-                        #     '<span style="color: #808080; font-size: small;">*Person examples come from the demos of <a href="https://huggingface.co/spaces/levihsu/OOTDiffusion">OOTDiffusion</a> and <a href="https://www.outfitanyone.org">OutfitAnyone</a>. </span>'
-                        # )
-                    with gr.Column():
-                        condition_upper_exm = gr.Examples(
-                            examples=[
-                                os.path.join(root_path, "condition", "upper", _)
-                                for _ in os.listdir(os.path.join(root_path, "condition", "upper"))
-                            ],
-                            examples_per_page=4,
-                            inputs=cloth_image,
-                            label="Condition Upper Examples",
-                        )
-                        condition_overall_exm = gr.Examples(
-                            examples=[
-                                os.path.join(root_path, "condition", "overall", _)
-                                for _ in os.listdir(os.path.join(root_path, "condition", "overall"))
-                            ],
-                            examples_per_page=4,
-                            inputs=cloth_image,
-                            label="Condition Overall Examples",
-                        )
-                        condition_person_exm = gr.Examples(
-                            examples=[
-                                os.path.join(root_path, "condition", "person", _)
-                                for _ in os.listdir(os.path.join(root_path, "condition", "person"))
-                            ],
-                            examples_per_page=4,
-                            inputs=cloth_image,
-                            label="Condition Reference Person Examples",
-                        )
-                        gr.Markdown(
-                            '<span style="color: #808080; font-size: small;">*Condition examples come from the Internet. </span>'
-                        )
+                    # with gr.Column():
+                    #     men_exm = gr.Examples(
+                    #         examples=[
+                    #             os.path.join(root_path, "person", "men", _)
+                    #             for _ in os.listdir(os.path.join(root_path, "person", "men"))
+                    #         ],
+                    #         examples_per_page=4,
+                    #         inputs=image_path,
+                    #         label="Person Examples ①",
+                    #     )
+                    #     women_exm = gr.Examples(
+                    #         examples=[
+                    #             os.path.join(root_path, "person", "women", _)
+                    #             for _ in os.listdir(os.path.join(root_path, "person", "women"))
+                    #         ],
+                    #         examples_per_page=4,
+                    #         inputs=image_path,
+                    #         label="Person Examples ②",
+                    #     )
+                    #     # gr.Markdown(
+                    #     #     '<span style="color: #808080; font-size: small;">*Person examples come from the demos of <a href="https://huggingface.co/spaces/levihsu/OOTDiffusion">OOTDiffusion</a> and <a href="https://www.outfitanyone.org">OutfitAnyone</a>. </span>'
+                    #     # )
+                    # with gr.Column():
+                    #     condition_upper_exm = gr.Examples(
+                    #         examples=[
+                    #             os.path.join(root_path, "condition", "upper", _)
+                    #             for _ in os.listdir(os.path.join(root_path, "condition", "upper"))
+                    #         ],
+                    #         examples_per_page=4,
+                    #         inputs=cloth_image,
+                    #         label="Condition Upper Examples",
+                    #     )
+                    #     condition_overall_exm = gr.Examples(
+                    #         examples=[
+                    #             os.path.join(root_path, "condition", "overall", _)
+                    #             for _ in os.listdir(os.path.join(root_path, "condition", "overall"))
+                    #         ],
+                    #         examples_per_page=4,
+                    #         inputs=cloth_image,
+                    #         label="Condition Overall Examples",
+                    #     )
+                    #     condition_person_exm = gr.Examples(
+                    #         examples=[
+                    #             os.path.join(root_path, "condition", "person", _)
+                    #             for _ in os.listdir(os.path.join(root_path, "condition", "person"))
+                    #         ],
+                    #         examples_per_page=4,
+                    #         inputs=cloth_image,
+                    #         label="Condition Reference Person Examples",
+                    #     )
+                    #     gr.Markdown(
+                    #         '<span style="color: #808080; font-size: small;">*Condition examples come from the Internet. </span>'
+                    #     )
 
             image_path.change(
                 person_example_fn, inputs=image_path, outputs=person_image
